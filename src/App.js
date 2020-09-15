@@ -4,21 +4,19 @@ import './App.css';
 
 //importing new js on client side
 import PictureGallery from './PictureGallery';
+import ThingsToLearn from './ThingsToLearn';
 
 // React Component Incantation 
 class App extends Component {
   render() {
+    //returning some JSX
+    // JSX === Javascript eXtended
     return (
      <div>
        <h1>Happy React Day!</h1>
-
+       
        <h3>Things to learn about React:</h3>
-       <ul>
-         <li>HTML inside of JS files</li>
-         <li>class App extends Component ?!?!</li>
-         <li>render () ?</li>
-         <li>import / export ????</li>
-       </ul>
+       <ThingsToLearn />
        <h3>Check out my picture gallery:</h3>
        <PictureGallery />
      </div>
