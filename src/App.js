@@ -13,6 +13,7 @@ class App extends Component {
   state = {
     whatDayIsIt: 'Taco Day',
     feeling: 'Happy',
+    clickCount: 0
     //when button is clicked change
     //I want this to change to:
     //whatDayIsIt: 'Cage Day'
@@ -23,8 +24,24 @@ class App extends Component {
   clickalicious = () => {
     this.setState({
       feeling: 'Clickalus',
-      whatDayIsIt: 'Cage Day'
+      whatDayIsIt: 'Cage Day',
     })
+  }
+  onFeelingChange = (event) => {
+    console.log('event.target', event.target);
+    this.setState({
+     feeling: event.target.value
+   });
+  }
+  onDayChange = (event) => {
+    this.setState({
+      whatDayIsIt: event.target.value
+    });
+  }
+  onClickMeClick = () => {
+    this.setState({
+      clickCount: this.state.clickCount + 1
+    });
   }
 
   myAwesomeFunction() {
@@ -40,7 +57,16 @@ class App extends Component {
     //Awesome function
     this.myAwesomeFunction();
  
-
+    let clickerMessage;
+    if(this.state.clickCount < 10) {
+      clickerMessage = `Keep Going`
+    }
+    else if(this.state.clickCount < 15){
+      clickerMessage = `You're doing great`
+    }
+    else{
+      clickerMessage = `Woooaaahhh... chill`
+    }
 
     //returning some JSX
     // JSX === Javascript eXtended
@@ -49,7 +75,16 @@ class App extends Component {
       
        <h1>{this.state.feeling} {this.state.whatDayIsIt}!</h1>
        <div>Today is {getDate()}</div>
+       <input type="text" placeholder="Feeling" onChange={this.onFeelingChange}/>
+       <input type="text" placeholder="What Day is it?" onChange={this.onDayChange}/>
        <button onClick={this.clickalicious}>clickalicious</button>
+       <div>
+          <button onClick={this.onClickMeClick}>Click Me</button>
+          You have clicked this button {this.state.clickCount} times
+          <p>
+            {clickerMessage}
+          </p>
+       </div>
        <h3>Things to learn about React:</h3>
        <ThingsToLearn />
        <h3>Check out my picture gallery:</h3>
