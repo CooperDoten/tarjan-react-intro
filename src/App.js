@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import getDate from './utils/getDate'
 
 //importing new js on client side
 import PictureGallery from './PictureGallery';
@@ -13,6 +13,18 @@ class App extends Component {
   state = {
     whatDayIsIt: 'Taco Day',
     feeling: 'Happy',
+    //when button is clicked change
+    //I want this to change to:
+    //whatDayIsIt: 'Cage Day'
+    //feeling: 'Clickalus'
+  }
+//use ARROW FUNCTIONS!!!!!!
+//arrow functions save the value of this
+  clickalicious = () => {
+    this.setState({
+      feeling: 'Clickalus',
+      whatDayIsIt: 'Cage Day'
+    })
   }
 
   myAwesomeFunction() {
@@ -28,12 +40,16 @@ class App extends Component {
     //Awesome function
     this.myAwesomeFunction();
  
+
+
     //returning some JSX
     // JSX === Javascript eXtended
     return (
      <div>
+      
        <h1>{this.state.feeling} {this.state.whatDayIsIt}!</h1>
-       
+       <div>Today is {getDate()}</div>
+       <button onClick={this.clickalicious}>clickalicious</button>
        <h3>Things to learn about React:</h3>
        <ThingsToLearn />
        <h3>Check out my picture gallery:</h3>
@@ -42,5 +58,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
